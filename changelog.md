@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.2
+### Added
+- Added .NET 7 SDK as a minimum requirement to run WebGoat locally.
+- Adjusted project naming as it no longer targets .NET Core.
+
 ## Version 0.1
 ### Added
 - Added scripts to facilitate launching the WebGoat application.
