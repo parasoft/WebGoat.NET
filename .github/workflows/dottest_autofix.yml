@@ -41,8 +41,10 @@ jobs:
       id: dottest
       uses: parasoft/run-dottest-action@2.0.2
       with:
+        # Path to the solution to be analyzed. Specify a semicolon-separated list of paths to analyze many solutions. Supports ANT-style wildcards.
+        solution: .\WebGoat.NET.sln
         # Path to the dotTEST installation directory, which contains dottestcli.exe. If not specified, dottestcli.exe will be searched for on PATH.
-        #installDir: # optional
+        installDir: 'c:\Program Files\Parasoft\dotTEST\2025.2'
         # Path to the project to be analyzed when no solution is provided. Specify a semicolon-separated list of paths to analyze many projects. Supports ANT-style wildcards.
         testConfig: Recommended Rules
         #settings: # optional
@@ -54,6 +56,8 @@ jobs:
         #targetPlatform: "Any CPU"
         # Path to the location where console output is saved.
         #out: ${{ github.workspace }}/.dottest/report/${{ github.run_number }}/output.txt
+        # Path to the directory where the report will be created.
+        reportDir: ${{ github.workspace }}/.dottest/report/${{ github.run_number }}
 
     # ---------------------------------------------------------------
     # Uploads an archive that includes all report files (.xml, .html, .sarif).
@@ -80,7 +84,7 @@ jobs:
       shell: bash
       run: |
         python "${{ steps.dottest.outputs.installDir }}/integration/aider/DottestAutoFix.py" \
-          --report "${{ steps.dottest.outputs.report }}" \
+          --report ${{ github.workspace }}/.dottest/report/${{ github.run_number }}/report.xml \
           --tool-home "${{ steps.dottest.outputs.installDir }}" \
           --solution "${{ steps.dottest.outputs.solution }}" \
           --fix-limit 3
