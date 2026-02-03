@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.5
+### Added
+- Added .NET 10 SDK as a minimum requirement to run WebGoat locally.
+
+## Version 0.4
+### Added
+- Added .NET 9 SDK as a minimum requirement to run WebGoat locally.
+
 ## Version 0.3
 ### Added
 - Added .NET 8 SDK as a minimum requirement to run WebGoat locally.
