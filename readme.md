@@ -9,7 +9,7 @@ This example shows the following dotTEST capabilities:
 ## Table of Contents
 
 - [dotTEST capabilities](#dotTEST-capabilities)
-- [About WebGoat.NET project](#WebGoatNET-version-03)
+- [About WebGoat.NET project](#WebGoatNET-version-05)
 
 ## dotTEST Capabilities
 
@@ -41,13 +41,13 @@ python DottestAutoFix.py ^
 
 See [**LINK**](https://docs.parasoft.com/display/DOTTEST20252/Fixing+Violations+Using+AI+Autofix) for details regarding Autofix configuration and usage.
 
-## WebGoat.NET version 0.3
+# WebGoat.NET version 0.5
 
-### Build Status
+## Build Status
 
-![build .NET 8](https://github.com/tobyash86/WebGoat.NET/workflows/build%20.NET%208/badge.svg)
+![build .NET 10](https://github.com/tobyash86/WebGoat.NET/workflows/build%20.NET%2010/badge.svg)
 
-### The Next-Generation WebGoat Example Project Demonstrating OWASP Top 10 Vulnerabilities
+## The next generation of the WebGoat example project to demonstrate OWASP TOP 10 vulnerabilities
 
 This is a re-implementation of the original [WebGoat project for .NET](https://github.com/rappayne/WebGoat.NET).
 
