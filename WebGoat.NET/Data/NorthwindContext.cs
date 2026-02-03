@@ -38,9 +38,15 @@ namespace WebGoatCore.Data
         {
         }
 
-        public DbSet<BlogEntry> BlogEntries { get; set; }
-        public DbSet<BlogResponse> BlogResponses { get; set; }
-        public DbSet<Category> Categories { get; set; }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+        public NorthwindContext()
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+        {
+        }
+
+        public virtual DbSet<BlogEntry> BlogEntries { get; set; }
+        public virtual DbSet<BlogResponse> BlogResponses { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
