@@ -34,7 +34,7 @@ jobs:
           # Path to working directory.
           installDir: c:\Program Files\Parasoft\dotTEST\2026.1
           testConfig: Flow Analysis
-          solution: \*.slnx
+          solution: .\*.slnx
 
       # ---------------------------------------------------------------
       # Upload the findings into the GitHub code scanning alert section
