@@ -14,12 +14,15 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public Product GetProductById(int productId)
+        // for unit tests only
+        public ProductRepository() { }
+
+        public virtual Product GetProductById(int productId)
         {
             return _context.Products.Single(p => p.ProductId == productId);
         }
 
-        public List<Product> GetTopProducts(int numberOfProductsToReturn)
+        public virtual List<Product> GetTopProducts(int numberOfProductsToReturn)
         {
             var orderDate = DateTime.Today.AddMonths(-1);
             var topProducts = _context.Orders
@@ -44,12 +47,12 @@ namespace WebGoatCore.Data
             return topProducts;
         }
 
-        public List<Product> GetAllProducts()
+        public virtual List<Product> GetAllProducts()
         {
             return _context.Products.OrderBy(p => p.ProductName).ToList();
         }
 
-        public List<Product> FindNonDiscontinuedProducts(string? productName, int? categoryId)
+        public virtual List<Product> FindNonDiscontinuedProducts(string? productName, int? categoryId)
         {
             var products = _context.Products.Where(p => !p.Discontinued);
 
@@ -65,14 +68,14 @@ namespace WebGoatCore.Data
             return products.OrderBy(p => p.ProductName).ToList();
         }
 
-        public Product Update(Product product)
+        public virtual Product Update(Product product)
         {
             product = _context.Products.Update(product).Entity;
             _context.SaveChanges();
             return product;
         }
 
-        public void Add(Product product)
+        public virtual void Add(Product product)
         {
             _context.Products.Add(product);
             _context.SaveChanges();

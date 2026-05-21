@@ -32,8 +32,9 @@ jobs:
         uses: parasoft/run-dottest-analyzer@2.0.0
         with:
           # Path to working directory.
-          installDir: c:\Program Files\Parasoft\dotTEST\2022.2
+          installDir: c:\Program Files\Parasoft\dotTEST\2026.1
           testConfig: Flow Analysis
+          solution: .\*.slnx
 
       # ---------------------------------------------------------------
       # Upload the findings into the GitHub code scanning alert section
@@ -45,7 +46,7 @@ jobs:
       # ---------------------------------------------------------------
       # Archive the findings reports as job artifact
       - name: Upload static analysis artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: Report files
           path: ${{ steps.dottest_sa.outputs.reportDir }}/*.*

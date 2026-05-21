@@ -14,7 +14,10 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public Dictionary<int, string> GetShippingOptions(decimal orderSubtotal)
+        // for unit tests only
+        public ShipperRepository() { }
+
+        public virtual Dictionary<int, string> GetShippingOptions(decimal orderSubtotal)
         {
             return _context.Shippers.ToDictionary(
                 s => s.ShipperId, 
@@ -27,7 +30,7 @@ namespace WebGoatCore.Data
             return $"{shipper.CompanyName} {shipper.ServiceName} - {shippingCost}";
         }
 
-        public Shipper GetShipperByShipperId(int shipperId)
+        public virtual Shipper GetShipperByShipperId(int shipperId)
         {
             return _context.Shippers.Single(s => s.ShipperId == shipperId);
         }
@@ -41,7 +44,7 @@ namespace WebGoatCore.Data
         /// TODO: Use the check digit algorithms to make it realistic.
         /// Source for tracking number formats: http://answers.google.com/answers/threadview/id/207899.html
         /// </remarks>
-        public string GetNextTrackingNumber(Shipper shipper)
+        public virtual string GetNextTrackingNumber(Shipper shipper)
         {
             var random = new Random();
             var companyName = shipper.CompanyName;

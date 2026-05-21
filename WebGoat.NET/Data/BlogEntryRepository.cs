@@ -15,7 +15,10 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public BlogEntry CreateBlogEntry(string title, string contents, string username)
+        // for unit tests only
+        public BlogEntryRepository() { }
+
+        public virtual BlogEntry CreateBlogEntry(string title, string contents, string username)
         {
             DummyLogger.Log($"Adding blog entry - title: {title} | user: {username}");
             var entry = new BlogEntry
@@ -32,17 +35,17 @@ namespace WebGoatCore.Data
             return entry;
         }
 
-        public BlogEntry GetBlogEntry(int blogEntryId)
+        public virtual BlogEntry GetBlogEntry(int blogEntryId)
         {
             return _context.BlogEntries.Single(b => b.Id == blogEntryId);
         }
 
-        public List<BlogEntry> GetTopBlogEntries()
+        public virtual List<BlogEntry> GetTopBlogEntries()
         {
             return GetTopBlogEntries(4, 0);
         }
 
-        public List<BlogEntry> GetTopBlogEntries(int numberOfEntries, int startPosition)
+        public virtual List<BlogEntry> GetTopBlogEntries(int numberOfEntries, int startPosition)
         {
             var blogEntries = _context.BlogEntries
                 .OrderByDescending(b => b.PostedDate)

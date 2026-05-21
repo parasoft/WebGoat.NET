@@ -11,7 +11,10 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public void CreateBlogResponse(BlogResponse response)
+        // for unit tests only
+        public BlogResponseRepository() { }
+
+        public virtual void CreateBlogResponse(BlogResponse response)
         {
             //TODO: should put this in a try/catch
             _context.BlogResponses.Add(response);

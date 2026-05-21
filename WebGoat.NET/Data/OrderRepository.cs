@@ -19,12 +19,15 @@ namespace WebGoatCore.Data
             _customerRepository = customerRepository;
         }
 
-        public Order GetOrderById(int orderId)
+        // for unit tests only
+        public OrderRepository() { }
+
+        public virtual Order GetOrderById(int orderId)
         {
             return _context.Orders.Single(o => o.OrderId == orderId);
         }
 
-        public int CreateOrder(Order order)
+        public virtual int CreateOrder(Order order)
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             // These commented lines cause EF Core to do wierd things.
@@ -85,7 +88,7 @@ namespace WebGoatCore.Data
             return order.OrderId;
         }
 
-        public void CreateOrderPayment(int orderId, decimal amountPaid, string creditCardNumber, DateTime expirationDate, string approvalCode)
+        public virtual void CreateOrderPayment(int orderId, decimal amountPaid, string creditCardNumber, DateTime expirationDate, string approvalCode)
         {
             var orderPayment = new OrderPayment()
             {
@@ -100,7 +103,7 @@ namespace WebGoatCore.Data
             _context.SaveChanges();
         }
 
-        public ICollection<Order> GetAllOrdersByCustomerId(string customerId)
+        public virtual ICollection<Order> GetAllOrdersByCustomerId(string customerId)
         {
             return _context.Orders
                 .Where(o => o.CustomerId == customerId)
