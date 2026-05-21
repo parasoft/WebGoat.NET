@@ -13,24 +13,27 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public Customer? GetCustomerByUsername(string username)
+        // for unit tests only
+        public CustomerRepository() { }
+
+        public virtual Customer? GetCustomerByUsername(string username)
         {
             return _context.Customers.FirstOrDefault(c => c.ContactName == username);
         }
 
-        public Customer GetCustomerByCustomerId(string customerId)
+        public virtual Customer GetCustomerByCustomerId(string customerId)
         {
             return _context.Customers.Single(c => c.CustomerId == customerId);
         }
 
-        public void SaveCustomer(Customer customer)
+        public virtual void SaveCustomer(Customer customer)
         {
             _context.Update(customer);
             _context.SaveChanges();
         }
 
         //TODO: Add try/catch logic
-        public string CreateCustomer(string companyName, string contactName, string? address, string? city, string? region, string? postalCode, string? country)
+        public virtual string CreateCustomer(string companyName, string contactName, string? address, string? city, string? region, string? postalCode, string? country)
         {
             var customerId = GenerateCustomerId(companyName);
             var customer = new Customer()

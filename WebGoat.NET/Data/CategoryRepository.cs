@@ -13,12 +13,15 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public List<Category> GetAllCategories()
+        // for unit tests only
+        public CategoryRepository() { }
+
+        public virtual List<Category> GetAllCategories()
         {
             return _context.Categories.OrderBy(c => c.CategoryId).ToList();
         }
 
-        public Category? GetById(int id)
+        public virtual Category? GetById(int id)
         {
             return _context.Categories.Find(id);
         }

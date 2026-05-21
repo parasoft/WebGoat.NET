@@ -13,7 +13,10 @@ namespace WebGoatCore.Data
             _context = context;
         }
 
-        public List<Supplier> GetAllSuppliers()
+        // for unit tests only
+        public SupplierRepository() { }
+
+        public virtual List<Supplier> GetAllSuppliers()
         {
             return _context.Suppliers.OrderBy(s => s.CompanyName).ToList();
         }
